@@ -1,0 +1,19 @@
+{
+  "name": "edn-to-js",
+  "version": "0.0.0",
+  "description": "EDN to JS",
+  "main": "dist/main.js",
+  "scripts": {
+    "watch": "shadow-cljs watch app",
+    "compile": "shadow-cljs compile app",
+    "build": "shadow-cljs release app"
+  },
+  "keywords": [],
+  "author": "Mac Heller-Ogden",
+  "license": "MIT",
+  "devDependencies": {
+    "shadow-cljs": "^2.8.25",
+    "source-map-support": "^0.5.10",
+    "ws": "^6.1.2"
+  }
+}
