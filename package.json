@@ -11,6 +11,10 @@
   "keywords": [],
   "author": "Mac Heller-Ogden",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/machellerogden/edn-to-js.git"
+  },
   "devDependencies": {
     "shadow-cljs": "^2.8.25",
     "source-map-support": "^0.5.10",
