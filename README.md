@@ -11,6 +11,6 @@ const edn = require('edn-to-js');
 edn('{:foo "bar"}'); // => { foo: 'bar' }
 ```
 
-## LICENSE
+## License
 
 MIT
