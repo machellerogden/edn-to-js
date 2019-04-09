@@ -2,4 +2,6 @@
  :dependencies []
  :builds {:app {:target :node-library
                 :output-to "dist/main.js"
-                :exports-var edn-to-js.main/edn->js}}} 
+                :exports-var edn-to-js.main/edn->js 
+                :main edn-to-js.main/main!
+                :devtools {:after-load edn-to-js.main/reload!}}}}
