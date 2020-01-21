@@ -1,6 +1,6 @@
 {
   "name": "edn-to-js",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "EDN to JS",
   "bin": {
     "json-to-edn": "./dist/cli.js"
