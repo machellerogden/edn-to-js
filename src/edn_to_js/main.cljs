@@ -3,10 +3,5 @@
             [cljs.reader :as r]))
 
 (defn edn->js [edn]
-  (let [data (r/read-string edn)]
-    (clj->js data)))
+  (clj->js (r/read-string edn)))
 
-(defn reload! []
-  (println "Code updated."))
-
-(defn main! [])
