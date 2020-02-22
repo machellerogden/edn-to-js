@@ -1,12 +1,15 @@
 {:source-paths ["src"]
  :dependencies []
  :builds {:app {:target :node-library
-                :output-to "dist/main.js"
-                :exports-var edn-to-js.main/edn->js 
-                :main edn-to-js.main/main!
-                :devtools {:after-load edn-to-js.main/reload!}}
-          :cli {:target :node-script
-                :output-to "dist/cli.js"
-                :exports {}
-                :main edn-to-js.cli/main!
-                :devtools {:after-load edn-to-js.main/reload!}}}}
+                :output-to "dist/core.js"
+                :exports-var edn-to-js.core/edn->js} 
+          :json-to-clj-cli {:target :node-script
+                            :output-to "dist/json-to-clj.js"
+                            :exports {}
+                            :main edn-to-js.bin.json-to-clj/main!
+                            :devtools {:after-load edn-to-js.bin.json-to-clj/reload!}}
+          :clj-to-json-cli {:target :node-script
+                            :output-to "dist/clj-to-json.js"
+                            :exports {}
+                            :main edn-to-js.bin.clj-to-json/main!
+                            :devtools {:after-load edn-to-js.bin.clj-to-json/reload!}}}}

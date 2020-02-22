@@ -3,17 +3,21 @@
   "version": "0.1.0",
   "description": "EDN to JS",
   "bin": {
-    "json-to-edn": "./dist/cli.js"
+    "json-to-edn": "./dist/json-to-clj.js",
+    "edn-to-json": "./dist/clj-to-json.js"
   },
   "main": "dist/main.js",
   "scripts": {
     "watch": "shadow-cljs watch app",
     "compile": "shadow-cljs compile app",
     "build": "shadow-cljs release app",
-    "watch-cli": "shadow-cljs watch cli",
-    "compile-cli": "shadow-cljs compile cli",
-    "build-cli": "shadow-cljs release cli",
-    "prepare": "npm run build && npm run build-cli"
+    "watch-json-to-clj-cli": "shadow-cljs watch json-to-clj-cli",
+    "compile-json-to-clj-cli": "shadow-cljs compile json-to-clj-cli",
+    "build-json-to-clj-cli": "shadow-cljs release json-to-clj-cli",
+    "watch-clj-to-json-cli": "shadow-cljs watch clj-to-json-cli",
+    "compile-clj-to-json-cli": "shadow-cljs compile clj-to-json-cli",
+    "build-clj-to-json-cli": "shadow-cljs release clj-to-json-cli",
+    "prepare": "npm run build && npm run build-json-to-clj-cli && npm run build-clj-to-json-cli"
   },
   "keywords": [],
   "author": "Mac Heller-Ogden",
