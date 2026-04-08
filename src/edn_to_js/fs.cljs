@@ -1,6 +1,5 @@
 (ns edn-to-js.fs
-  (:require [cljs.nodejs :as nodejs]
-            [cljs.reader :as r]
+  (:require [cljs.reader :as r]
             [edn-to-js.translate :refer [json-stringify json->clj]]
             ["fs" :as fs]))
 

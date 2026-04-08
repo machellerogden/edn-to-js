@@ -1,21 +1,21 @@
 {
   "name": "edn-to-js",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "EDN to JS",
+  "type": "module",
   "bin": {
-    "json-to-edn": "./dist/json-to-clj.js",
-    "edn-to-json": "./dist/clj-to-json.js"
+    "json-to-edn": "./dist/json-to-clj.cjs",
+    "edn-to-json": "./dist/clj-to-json.cjs"
+  },
+  "exports": {
+    ".": "./dist/main.js"
   },
   "main": "dist/main.js",
   "scripts": {
     "watch": "shadow-cljs watch app",
     "compile": "shadow-cljs compile app",
     "build": "shadow-cljs release app",
-    "watch-json-to-clj-cli": "shadow-cljs watch json-to-clj-cli",
-    "compile-json-to-clj-cli": "shadow-cljs compile json-to-clj-cli",
     "build-json-to-clj-cli": "shadow-cljs release json-to-clj-cli",
-    "watch-clj-to-json-cli": "shadow-cljs watch clj-to-json-cli",
-    "compile-clj-to-json-cli": "shadow-cljs compile clj-to-json-cli",
     "build-clj-to-json-cli": "shadow-cljs release clj-to-json-cli",
     "prepare": "npm run build && npm run build-json-to-clj-cli && npm run build-clj-to-json-cli"
   },
@@ -27,8 +27,6 @@
     "url": "https://github.com/machellerogden/edn-to-js.git"
   },
   "devDependencies": {
-    "shadow-cljs": "^2.8.25",
-    "source-map-support": "^0.5.10",
-    "ws": "^6.1.2"
+    "shadow-cljs": "^3.3.6"
   }
 }

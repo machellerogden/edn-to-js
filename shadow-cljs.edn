@@ -1,15 +1,19 @@
-{:source-paths ["src"]
- :dependencies []
- :builds {:app {:target :node-library
-                :output-to "dist/core.js"
-                :exports-var edn-to-js.core/edn->js} 
-          :json-to-clj-cli {:target :node-script
-                            :output-to "dist/json-to-clj.js"
-                            :exports {}
-                            :main edn-to-js.bin.json-to-clj/main!
-                            :devtools {:after-load edn-to-js.bin.json-to-clj/reload!}}
-          :clj-to-json-cli {:target :node-script
-                            :output-to "dist/clj-to-json.js"
-                            :exports {}
-                            :main edn-to-js.bin.clj-to-json/main!
-                            :devtools {:after-load edn-to-js.bin.clj-to-json/reload!}}}}
+{:deps true
+ :builds
+ {:app
+  {:target :esm
+   :output-dir "dist"
+   :modules
+   {:main
+    {:exports {ednToJs edn-to-js.core/edn->js
+               jsonToClj edn-to-js.core/json->clj
+               cljToJson edn-to-js.core/clj->json
+               jsonStringify edn-to-js.core/json-stringify}}}}
+  :json-to-clj-cli
+  {:target :node-script
+   :output-to "dist/json-to-clj.cjs"
+   :main edn-to-js.bin.json-to-clj/main!}
+  :clj-to-json-cli
+  {:target :node-script
+   :output-to "dist/clj-to-json.cjs"
+   :main edn-to-js.bin.clj-to-json/main!}}}

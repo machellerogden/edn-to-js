@@ -1,15 +1,50 @@
 # edn-to-js
 
-> A simple ClojureScript `edn->js` implementation, exported as a commonjs module.
-
-After finding an appalling lack of anything sensible for converting EDN to JavaScript data on NPM I took literally 5 minutes and wrote, built and published this.
+> Convert EDN to JavaScript data. Tolerant of tagged literals (`#inst`, `#uuid`, custom tags).
 
 ## Usage
 
 ```js
-const edn = require('edn-to-js');
-edn('{:foo "bar"}'); // => { foo: 'bar' }
+import { ednToJs, cljToJson, jsonToClj, jsonStringify } from 'edn-to-js';
+
+ednToJs('{:foo "bar"}');
+// => { foo: 'bar' }
+
+ednToJs('{:created #inst "2024-01-01T00:00:00Z"}');
+// => { created: { tag: 'inst', form: '2024-01-01T00:00:00Z' } }
+
+cljToJson('{:foo "bar"}');
+// => '{"foo":"bar"}'
+
+jsonToClj('{"foo":"bar"}');
+// => { foo: 'bar' }
 ```
+
+## CLI
+
+```sh
+echo '{:foo "bar"}' | edn-to-json
+# {"foo":"bar"}
+
+echo '{"foo":"bar"}' | json-to-edn
+# {:foo "bar"}
+```
+
+## Migrating from 0.x
+
+v1.0 is a full rewrite. The package is now ESM and exports named functions instead of a single CommonJS default.
+
+```js
+// Before (0.x)
+const edn = require('edn-to-js');
+edn('{:foo "bar"}');
+
+// After (1.x)
+import { ednToJs } from 'edn-to-js';
+ednToJs('{:foo "bar"}');
+```
+
+Tagged literals like `#inst` and `#uuid` no longer throw. They are converted to `{ tag, form }` objects.
 
 ## License
 

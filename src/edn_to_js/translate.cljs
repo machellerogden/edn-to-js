@@ -1,6 +1,18 @@
 (ns edn-to-js.translate
-  (:require [cljs.nodejs :as nodejs]
-            [cljs.reader :as r]))
+  (:require [cljs.reader :as r]))
+
+;; Register a default tag handler so unknown tagged literals
+;; (e.g. #inst, #uuid, custom tags) don't throw during read.
+(reset! r/*default-data-reader-fn*
+        (fn [tag value] (tagged-literal tag value)))
+
+;; Teach clj->js how to convert TaggedLiteral cleanly,
+;; otherwise it dumps internal record fields.
+(extend-type TaggedLiteral
+  IEncodeJS
+  (-clj->js [x]
+    #js {:tag (str (.-tag x))
+         :form (clj->js (.-form x))}))
 
 (defn edn->js [edn]
   (clj->js (r/read-string edn)))
